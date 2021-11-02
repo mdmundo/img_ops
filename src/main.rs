@@ -1,15 +1,12 @@
-use image::imageops::flip_horizontal;
-use image::io::Reader;
+mod ops;
 
 fn main() {
-    let img = Reader::open("test_image.png")
-        .expect("Opening error")
-        .decode()
-        .expect("Decoding error");
+    let img = ops::open();
 
-    let edited_img = flip_horizontal(&img);
+    let mut args = std::env::args().skip(1);
+    let op = args.next().expect("Operation required");
+    let opt = args.next().expect("Option required");
+    let edited_img = ops::op(&op, &opt, &img);
 
-    edited_img
-        .save("edited_test_image.png")
-        .expect("Saving error");
+    ops::save(edited_img);
 }
