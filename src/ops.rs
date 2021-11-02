@@ -35,18 +35,23 @@ fn r270(img: &DynamicImage) -> ImageBuffer<Rgba<u8>, Vec<u8>> {
 
 fn f(axis: &str, img: &DynamicImage) -> ImageBuffer<Rgba<u8>, Vec<u8>> {
     if axis.eq("h") {
+        println!("Flip image horizontally");
         fh(img)
     } else {
+        println!("Flip image vertically");
         fv(img)
     }
 }
 
 fn r(deg: &str, img: &DynamicImage) -> ImageBuffer<Rgba<u8>, Vec<u8>> {
     if deg.eq("90") {
+        println!("Rotate image 90 degrees clockwise");
         r90(img)
     } else if deg.eq("180") {
+        println!("Rotate image 180 degrees clockwise");
         r180(img)
     } else {
+        println!("Rotate image 270 degrees clockwise");
         r270(img)
     }
 }
