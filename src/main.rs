@@ -1,3 +1,4 @@
+use image::imageops::flip_horizontal;
 use image::io::Reader;
 
 fn main() {
@@ -6,7 +7,9 @@ fn main() {
         .decode()
         .expect("Decoding error");
 
-    // Operations
+    let edited_img = flip_horizontal(&img);
 
-    img.save("edited_test_image.png").expect("Saving error");
+    edited_img
+        .save("edited_test_image.png")
+        .expect("Saving error");
 }
